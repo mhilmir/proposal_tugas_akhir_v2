@@ -3,11 +3,46 @@
 % Ubah konten-konten berikut sesuai dengan isi dari tinjauan pustaka
 \section{Hasil penelitian/perancangan terdahulu}
 
+Pada penelitian yang berjudul "\emph{Task-Level Intelligent Human-Robot Interaction
+for Assisting Multi-objective Autonomous Grasping Decision with Quadruped Robots}"
+\parencite{QifanZhang_tlihrifamoagdwqr}, Zhang et al. mengusulkan pendekatan
+interaksi manusia-robot (HRI) berbasis \emph{task-level} untuk meningkatkan kemampuan robot \emph{quadruped}
+dalam mengambil keputusan saat melakukan \emph{grasping} terhadap beberapa objek secara otonom.
+Dalam penelitian ini, sistem yang dikembangkan bertujuan untuk mengatasi keterbatasan sistem
+\emph{grasping} otonom pada robot \emph{quadruped} yang umumnya memiliki kapabilitas pengambilan keputusan
+yang terbatas serta minim interaksi dengan operator manusia. Penelitian ini merancang sebuah terminal kontrol
+yang dilengkapi dengan layar sentuh, memungkinkan operator untuk secara intuitif menentukan
+pusat pencarian objek melalui tampilan video yang diterima dari robot.
+Eksperimen yang dilakukan dalam lingkungan nyata menunjukkan bahwa metode ini efektif dalam
+menangani skenario \emph{multi-target} \emph{grasping} dan meningkatkan pengambilan keputusan robot \emph{quadruped}
+saat menghadapi berbagai objek.
 
+% Terminal kontrol menerima umpan video langsung dari robot melalui pemancar video, kemudian menampilkan gambar yang telah
+% didekodekan dalam antarmuka grafis (GUI). Dengan memilih titik tertentu dalam gambar sebagai pusat
+% pencarian, sistem pengenalan target yang diterapkan akan menggunakan prinsip jarak Euclidean terpendek
+% untuk mencari objek yang paling relevan dalam area sekitar titik yang dipilih. Setelah
+% target grasping ditentukan, sistem kemudian secara otomatis memulai perencanaan lintasan
+% serta deteksi grasping untuk mengeksekusi tugas manipulasi objek.  
+
+Dalam penelitian lain yang berjudul "\emph{Scene Prediction and Manipulator Grasp Pose
+Estimation Based on YOLO-GraspNet}"\parencite{LiWanyan_spamgpeboyg}, Wanyan et al. mengusulkan
+algoritma estimasi posisi berbasis prediksi skenario yang disebut YOLO-GraspNet untuk
+meningkatkan akurasi dan kecepatan dalam proses \emph{grasping} oleh lengan robot, terutama dalam
+menangani objek dengan bentuk tidak beraturan di lingkungan yang kompleks.
+Metode yang dikembangkan terdiri dari dua tahap utama. Pada tahap pertama, model YOLOv5s
+digunakan untuk mengidentifikasi dan menentukan lokasi target \emph{grasping}, serta menandai informasi
+kedalaman dari area target yang telah terdeteksi. Dengan demikian, hanya area yang relevan
+yang akan diproses lebih lanjut, sehingga mengurangi jumlah data yang perlu diproses dan
+meningkatkan efisiensi sistem. Selanjutnya, pada tahap kedua, jaringan GraspNet digunakan
+untuk memproses data dari area yang telah ditandai guna memperkirakan \emph{pose} \emph{grasping} yang optimal.
+Dengan mengombinasikan keunggulan YOLOv5s dalam deteksi objek yang cepat dan akurat serta
+kemampuan GraspNet dalam prediksi \emph{pose} \emph{grasping} yang presisi, metode ini dapat mengatasi
+tantangan utama yang dihadapi oleh pendekatan konvensional, seperti jumlah data masukan yang besar,
+kecepatan perhitungan yang lambat, dan ketidakakuratan dalam menentukan posisi objek dengan bentuk kompleks.
 
 \section{Teori/Konsep Dasar}
 
-\subsection{Hukum Newton}
+% \subsection{Hukum Newton}
 
 % % Contoh penggunaan referensi dari pustaka
 % Newton pernah merumuskan \parencite{Newton1687} bahwa \lipsum[8]
@@ -22,5 +57,16 @@
 % \end{equation}
 % \lipsum[9]
 
-\subsection{Anti Gravitasi}
+\subsection{Robot \emph{Quadruped}}
 
+\subsection{Robot Lengan}
+
+\subsection{Human-Robot Interaction}
+
+\subsection{Grasping Pose Detection}
+
+\subsection{Pengolahan Citra}
+
+\subsection{ROS}
+
+\subsection{GraspNet}
