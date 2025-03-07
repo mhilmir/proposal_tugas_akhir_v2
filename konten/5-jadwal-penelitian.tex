@@ -15,22 +15,57 @@
     \hline
 
     % Gunakan \G untuk mengisi sel dan \w untuk mengosongkan sel
-    Pengambilan data          &
-    \G                        & \G                            & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w \\
+    Studi Literatur           &
+    \G                        & \G                            & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w \\
     \hline
 
-    Pengolahan data           &
-    \w                        & \w                            & \w & \w & \G & \G & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w \\
+    Instalasi Kamera Pada Robot Lengan           &
+    \w                        & \w                            & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w \\
     \hline
 
-    Analisa data              &
-    \w                        & \w                            & \w & \w & \w & \w & \w & \w & \G & \G & \G & \G & \w & \w & \w & \w \\
+    Implementasi GraspNet Pada Robot Lengan              &
+    \w                        & \w                            & \w & \w & \G & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w & \w \\
     \hline
 
-    Evaluasi penelitian       &
-    \w                        & \w                            & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \G & \G & \G & \G \\
+    Algoritma Pemilihan Objek Grasping       &
+    \w                        & \w                            & \w & \w & \w & \w & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w \\
+    \hline
+
+    Perancangan Desain Mounting Robot Lengan Pada Quadruped       &
+    \w                        & \w                            & \w & \w & \w & \w & \w & \w & \G & \G & \w & \w & \w & \w & \w & \w \\
+    \hline
+
+    Algoritma Sistem Task-Level       &
+    \w                        & \w                            & \w & \w & \w & \w & \w & \w & \w & \w & \G & \G & \G & \G & \w & \w \\
+    \hline
+
+    Testing - Bug Fixes       &
+    \w                        & \w                            & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \G & \G \\
     \hline
   \end{tabular}
 \end{table}
 
-Pada \emph{timeline} yang tertera di Tabel \ref{tbl:timeline} \lipsum[10]
+Pada \emph{timeline} yang tertera di Tabel \ref{tbl:timeline}, menggambarkan perkiraan jenis kegiatan
+yang akan dilakukan selama 16 minggu perkuliahan. Dengan pembagian waktu yang telah direncanakan secara
+sistematis, diharapkan penelitian ini dapat berjalan dengan baik dan selesai tepat waktu. Pada minggu 1
+hingga minggu 2, peneliti akan melakukan studi literatur untuk memahami konsep-konsep dasar yang diperlukan
+dalam penelitian ini, termasuk terkait \emph{grasping} pada robot lengan, pemrosesan citra untuk deteksi objek,
+serta perancangan algoritma \emph{task-level} yang akan digunakan. Studi literatur ini menjadi landasan penting
+sebelum masuk ke tahap implementasi teknis. Memasuki minggu 3 dan 4, peneliti akan melakukan instalasi kamera
+pada robot lengan, yang mencakup proses pemasangan perangkat keras serta konfigurasi awal agar kamera dapat digunakan
+untuk mendeteksi objek. Pada tahap ini juga dilakukan pengujian awal terhadap sistem kamera untuk memastikan data visual
+yang dihasilkan cukup akurat untuk tahap selanjutnya.
+
+Pada minggu 5 hingga minggu 7, peneliti akan mulai mengimplementasikan GraspNet pada robot lengan untuk menentukan
+\emph{pose} \emph{grasping} yang optimal terhadap objek yang dipilih oleh operator. Pada minggu 7 dan 8, penelitian
+berlanjut ke tahap pengembangan algoritma pemilihan objek \emph{grasping}, yang bertujuan untuk memungkinkan operator
+memilih objek secara langsung melalui GUI yang menampilkan \emph{bounding box} dari objek-objek yang terdeteksi.
+Pada minggu 9 dan 10, peneliti akan melakukan perancangan desain \emph{mounting} robot lengan pada quadruped.
+Tahap ini mencakup desain mekanik dan analisis kestabilan agar \emph{mounting} dapat menopang robot lengan
+dengan baik tanpa mengganggu mobilitas quadruped. Pada minggu 11 dan 14, peneliti akan mengembangkan algoritma
+sistem \emph{task-level} yang akan mengoordinasikan seluruh komponen dalam sistem, termasuk pemrosesan visual,
+pemilihan objek, perhitungan \emph{grasping}, dan kendali pergerakan robot lengan serta quadruped. Akhirnya,
+pada minggu 15 hingga 16, penelitian akan memasuki tahap \emph{testing} dan \emph{bug fixes} untuk memastikan
+bahwa sistem bekerja dengan baik dalam berbagai skenario. Dengan adanya perencanaan ini, diharapkan penelitian
+dapat berjalan secara efektif dan menghasilkan sistem yang dapat berkontribusi dalam pengembangan robot berbasis
+\emph{Human-Robot Interaction} (HRI) yang lebih adaptif dan efisien.
