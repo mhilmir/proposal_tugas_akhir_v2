@@ -64,11 +64,11 @@ seperti anjing, kuda, atau harimau. Berbeda dengan robot beroda atau berkaki dua
 robot \emph{quadruped} memiliki keunggulan dalam hal stabilitas dan kemampuan bergerak di berbagai medan yang tidak rata\parencite{AshishMajithia_dmcapoqracr}.
 Struktur kaki yang dimiliki memungkinkan robot ini untuk mempertahankan keseimbangan bahkan
 saat bergerak di permukaan yang kasar, berbatu, atau licin, menjadikannya solusi ideal untuk
-berbagai aplikasi di bidang eksplorasi, pencarian dan penyelamatan, serta industri.  
+berbagai aplikasi di bidang eksplorasi, pencarian dan penyelamatan, serta industri.
 
 \begin{figure} [H] \centering
-  \includegraphics[scale=0.3]{gambar/quadruped_robot.jpg}
-  \caption{DeepRobotics Lite3\parencite{img_QuadrupedRobot}}
+  \includegraphics[scale=0.25]{gambar/quadruped_robot.jpg}
+  \caption{DeepRobotics Lite3}
   \label{fig:quadruped_robot}
 \end{figure}
 
@@ -79,14 +79,14 @@ yang masing-masing digunakan tergantung pada kecepatan dan kondisi medan.
 Implementasi gerakan ini membutuhkan sistem kendali yang kompleks,
 termasuk algoritma keseimbangan dinamis dan kontrol koordinasi antar kaki.
 Beberapa robot \emph{quadruped} menggunakan sensor inersia (IMU), kamera,
-serta teknologi kecerdasan buatan (AI) untuk meningkatkan kesadaran situasional dan kemampuan navigasi secara otonom.  
+serta teknologi kecerdasan buatan (AI) untuk meningkatkan kesadaran situasional dan kemampuan navigasi secara otonom.
 
 Robot \emph{quadruped} dapat dikategorikan berdasarkan sistem aktuasi yang digunakan,
 yaitu robot dengan aktuasi elektrik, hidraulik, atau kombinasi keduanya.
 Robot dengan aktuator elektrik cenderung lebih ringan dan lebih efisien dalam hal konsumsi daya,
 sementara robot hidraulik lebih kuat dan mampu menangani beban yang lebih berat.
 Beberapa robot \emph{quadruped} yang telah dikembangkan termasuk Spot dari Boston Dynamics,
-ANYmal dari ANYbotics, dan Unitree Go1, yang digunakan dalam berbagai penelitian dan aplikasi industri.  
+ANYmal dari ANYbotics, dan Unitree Go1, yang digunakan dalam berbagai penelitian dan aplikasi industri.
 
 Penggunaan robot \emph{quadruped} terus berkembang, terutama dalam bidang militer, eksplorasi luar angkasa,
 pertanian, dan robotika layanan. Dengan kemampuannya untuk bergerak secara fleksibel di medan yang menantang
@@ -99,7 +99,7 @@ dan peningkatan kecerdasan buatan agar mampu beradaptasi lebih baik dengan lingk
 
 \begin{figure} [H] \centering
   \includegraphics[scale=0.25]{gambar/arm_robot.png}
-  \caption{Salah Satu Jenis Robot Lengan Dari Wlkata\parencite{img_ArmRobot}}
+  \caption{Salah Satu Jenis Robot Lengan Dari Wlkata}
   \label{fig:arm_robot}
 \end{figure}
 Robot lengan, atau \emph{robotic arm}, adalah jenis robot yang dirancang untuk meniru fungsi lengan manusia
@@ -177,6 +177,12 @@ digunakan dalam industri manufaktur sering kali dilengkapi dengan sensor gaya da
 sehingga dapat memperlambat atau menghentikan gerakan ketika mendekati manusia. Selain itu, desain robot yang lebih ramah secara
 visual dan ergonomis dapat meningkatkan kepercayaan pengguna terhadap teknologi ini.  
 
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.2]{gambar/NAO_robot.jpg}
+    \caption{Salah Satu Contoh Robot Sosial NAO}
+    \label{fig:HRI_NAO_daster}
+\end{figure}
+
 Dalam bidang kesehatan, HRI memainkan peran penting dalam pengembangan robot pendamping bagi lansia atau pasien dengan kebutuhan khusus.
 Robot semacam ini dapat membantu dalam aktivitas sehari-hari, memberikan pengingat untuk minum obat, atau bahkan menyediakan interaksi
 sosial bagi pengguna yang mengalami kesepian. Selain itu, dalam terapi anak-anak dengan autisme, robot telah digunakan untuk membantu
@@ -187,8 +193,105 @@ manusia dan robot menjadi bahan diskusi yang terus berkembang.
 
 \subsection{Grasping Pose Detection}
 
+\emph{Grasping pose detection} adalah bidang yang berfokus pada pengenalan dan
+penentuan posisi optimal bagi robot untuk mengambil, memegang, dan memanipulasi objek dengan tangannya atau
+\emph{end-effector}. \emph{Grasping pose detection} merupakan aspek krusial dalam sistem robotik, terutama
+pada aplikasi seperti otomatisasi industri, layanan rumah tangga, logistik, serta bidang kesehatan. Kemampuan
+robot untuk secara akurat menentukan bagaimana cara menggenggam suatu objek sangat bergantung pada berbagai
+faktor seperti bentuk, ukuran, tekstur, dan material dari objek tersebut, serta kondisi lingkungan sekitarnya\parencite{ZhenXie_lbrgar}.
+
+\emph{Grasping pose detection} sering kali mengandalkan kombinasi antara teknologi sensor, algoritma, serta kecerdasan buatan.
+Sensor yang umum digunakan meliputi kamera RGB, kamera \emph{depth}, sensor LiDAR, dan sensor sentuh (\emph{tactile sensor}).
+Kamera RGB-D, seperti Intel RealSense atau Microsoft Kinect, memungkinkan robot untuk menangkap informasi visual serta kedalaman objek,
+sehingga dapat memahami bentuk tiga dimensi dari objek yang akan digenggam. Sementara itu, sensor sentuh memberikan umpan balik langsung
+tentang tekanan dan gesekan yang diterapkan oleh gripper robot terhadap objek yang dipegang, memungkinkan penyesuaian genggaman secara
+\emph{real-time} untuk menghindari tergelincir atau merusak objek.
+Algoritma yang digunakan dalam \emph{Grasping Pose Detection} umumnya memanfaatkan teknik pengolahan citra dan pembelajaran mesin.
+Pendekatan berbasis visi komputer sering kali menggunakan teknik seperti \emph{edge detection}, \emph{feature extraction}, dan segmentasi objek
+untuk mengidentifikasi kontur serta titik-titik kritis pada objek. Dengan kemajuan kecerdasan buatan, terutama \emph{deep learning}, banyak
+penelitian telah mengembangkan model berbasis jaringan saraf konvolusional (\emph{Convolutional Neural Networks} atau CNN) serta model
+berbasis \emph{Reinforcement Learning} untuk mempelajari strategi genggaman yang lebih fleksibel dan adaptif.
+Selanjutnya, metode berbasis \emph{motion planning} digunakan untuk membantu robot lengan dalam
+merancang lintasan yang optimal sehingga robot dapat mencapai posisi genggaman tanpa menabrak rintangan di sekitarnya.
+Metode ini sering dikombinasikan dengan pendekatan berbasis \emph{inverse kinematics} untuk menghitung konfigurasi sendi yang
+memungkinkan robot mencapai target genggaman dengan sudut dan orientasi yang sesuai.
+
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.95]{gambar/grasping_pose_detection.png}
+    \caption{Hasil Riset NVIDIA dalam pemanfaatan deep learning untuk grasping robot\parencite{img_grasping_daster}}
+    \label{fig:grasping_daster}
+\end{figure}
+
+Salah satu tantangan utama dalam \emph{Grasping Pose Detection} adalah menghadapi objek dengan bentuk yang kompleks,
+permukaan yang reflektif, atau kondisi pencahayaan yang berubah-ubah. Selain itu, keberadaan lingkungan yang dinamis,
+seperti objek yang bergerak atau berubah posisinya, juga menambah kompleksitas dalam menentukan strategi genggaman
+yang optimal.
+Dalam aplikasi nyata, \emph{Grasping Pose Detection} telah digunakan dalam berbagai bidang,
+seperti robot pemindah barang di gudang \emph{e-commerce}, sistem asisten robotik di rumah tangga,
+hingga robot medis yang dapat memegang dan memanipulasi peralatan bedah dengan presisi tinggi.
+
 \subsection{Pengolahan Citra}
+Dalam suatu sistem komputasi, citra yang ditemui pada dunia nyata tidak dapat secara
+langsung direpresentasikan oleh komputer. Dalam merubah bentuk citra di dunia nyata atau
+yang sering disebut citra analog perlu dilakukan perubahan dengan menggunakan sistem \emph{sampling}.
+Sistem \emph{sampling} ini berguna untuk mengubah citra analog menjadi M baris N kolom dan
+hasil ini dapat didefinisikan sebagai citra diskrit. Pertemuan titik antara M baris dan N kolom
+ini dinamakan dengan Piksel atau titik terkecil dari sebuah citra digital. Selain sistem \emph{sampling},
+di dalam citra digital juga terdapat kuantisasi. Kuantitasi adalah sebuah pemberian nilai-nilai
+tertentu pada sebuah piksel di dalam citra digital. Nilai kuantisasi ini dapat merepresentasikan
+warna maupun kecerahan dari piksel di dalam sebuah citra digital.
+
+Dengan adanya piksel dan hasil nilai kuantisasi maka dapat dilakukan pengoperasian matematika pada nilai kuantisasi
+di seluruh piksel yang dimiliki sebuah citra digital. Salah satu cara pengolahan yang paling mudah adalah dengan
+menggunakan \emph{library} yang bernama OpenCV\parencite{RDKusumanto_pcdumompwmnr}. OpenCV mampu membantu dalam pemrosesan
+data nilai suatu gambar yang dimana di dalam komputer hasil dari \emph{sampling} dan kuantisasi ini direpresentasikan
+sebagai sebuah \emph{array}. Pengolahan citra sering digunakan untuk mempersiapakan gambar sebelum diolah oleh program
+\emph{machine learning} sehingga menghasilkan hasil keputusan yang jauh lebih baik dibandingkan langsung memberikan gambar.
+
+Pengolahan citra memainkan peran penting dalam operasi robot lengan, terutama dalam meningkatkan akurasi
+dan efisiensi manipulasi objek dalam berbagai lingkungan. Dengan menggunakan kamera sebagai sensor visual, robot lengan
+dapat memperoleh informasi mengenai posisi, orientasi, serta karakteristik objek yang akan dipegang atau dipindahkan.
+Teknologi pengolahan citra memungkinkan robot untuk mendeteksi dan mengenali objek, mengklasifikasikan bentuk dan warna,
+serta menyesuaikan gerakan lengan agar sesuai dengan kondisi lingkungan.
 
 \subsection{ROS}
+\emph{Robot Operating System} (ROS) adalah sebuah \emph{framework open-source} yang dirancang untuk mendukung pengembangan
+perangkat lunak robotika yang kompleks dan modular. Meskipun namanya mengandung kata "\emph{Operating System}," ROS
+sebenarnya bukanlah sistem operasi yang independen, melainkan sebuah \emph{middleware} yang berjalan di atas sistem operasi
+seperti Ubuntu (Linux) dan menyediakan berbagai \emph{tools} serta \emph{library} untuk membantu \emph{developer} dalam membangun
+aplikasi robotika. ROS dikembangkan oleh Willow Garage dan sejak itu telah berkembang menjadi standar industri
+dalam komunitas robotika, baik dalam lingkungan akademik maupun industri.
+
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.65]{gambar/ros_system.png}
+    \caption{Sistem Kerja ROS\parencite{img_ros_system}}
+    \label{fig:ros_system}
+\end{figure}
+
+Salah satu keunggulan utama ROS adalah arsitektur berbasis \emph{node} dan komunikasi antarproses\parencite{ros_website}. Dalam ROS,
+sebuah sistem robot dapat dibagi menjadi beberapa \emph{node}, di mana setiap \emph{node} bertanggung jawab untuk menjalankan tugas
+tertentu, seperti pemrosesan sensor, kendali aktuator, atau perencanaan gerak. tiap-tiap \emph{node} ini dapat berkomunikasi
+satu sama lain menggunakan ROS \emph{topics}, \emph{services}, dan \emph{actions}, yang memungkinkan sistem menjadi lebih modular dan
+fleksibel. Misalnya, sebuah \emph{mobile robot} yang menggunakan kamera dan LIDAR untuk navigasi dapat memiliki satu \emph{node}
+untuk pemrosesan citra, satu \emph{node} untuk pemetaan lingkungan, dan satu \emph{node} untuk pengendalian gerak, yang semuanya
+bekerja secara terpisah tetapi tetap dapat saling bertukar informasi.
+Salah satu fitur penting lain dalam ROS adalah dukungan terhadap sistem terdistribusi, yang memungkinkan
+beberapa komputer untuk bekerja secara bersama-sama dalam satu jaringan ROS. Hal ini sangat berguna dalam
+sistem robotik yang kompleks, misalnya pada robot otonom yang terdiri dari beberapa subsistem terpisah
+seperti robot lengan yang bekerja bersama dengan \emph{mobile robot}.
+
+Selain itu, ROS menyediakan berbagai \emph{library} yang telah dioptimalkan untuk pemrosesan sensor,
+SLAM (\emph{Simultaneous Localization and Mapping}), perencanaan gerak, kontrol robotik, dan visi komputer.
+Salah satu \emph{library} yang sering digunakan dalam ROS adalah MoveIt!, yang mendukung perencanaan gerak
+pada robot manipulator seperti lengan robot. Selain itu, ada juga \emph{library} seperti OpenCV untuk
+pemrosesan citra, PCL untuk pemrosesan data 3D dari LIDAR, serta integrasi dengan
+berbagai jenis sensor dan aktuator melalui \emph{driver} yang telah dikembangkan dalam komunitas ROS.
+ROS juga mendukung simulasi robot melalui integrasi dengan Gazebo, RViz, dan simulasi berbasis \emph{physics engine} lainnya.
+Gazebo memungkinkan \emph{developer} untuk menguji algoritma kontrol robot dalam lingkungan simulasi sebelum diterapkan pada
+perangkat keras nyata, yang sangat berguna untuk menghindari kerusakan pada robot akibat kesalahan pemrograman. RViz,
+di sisi lain, adalah alat visualisasi yang digunakan untuk menampilkan data sensor, trajektori robot, serta hasil dari
+berbagai algoritma pemrosesan yang berjalan di dalam sistem ROS.
 
 \subsection{GraspNet}
+
+\subsection{QT}
