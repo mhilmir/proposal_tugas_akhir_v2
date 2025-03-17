@@ -80,8 +80,12 @@ Berikut merupakan penjelasan dari tiap tahapan pada metode penelitian di atas :
   Model GraspNet akan diterapkan pada data citra yang diperoleh dari kamera, sehingga sistem dapat menentukan
   titik \emph{grasping} terbaik dengan mempertimbangkan faktor seperti bentuk, orientasi, dan jenis objek.
   Terdapat dua jenis citra yang digunakan dalam model GraspNet, yaitu \emph{rgb frame} dan \emph{depth frame}.
-  [ISI GAMBAR]
-  \emph{rgb frame} berperan dalam memberikan informasi visual seperti warna, tekstur, dan bentuk objek
+  \begin{figure} [H] \centering
+    \includegraphics[scale=0.3]{gambar/depth_rgb.png}
+    \caption{Perbandingan depth dengan rgb}
+    \label{fig:depth_rgb}
+  \end{figure}
+  \emph{Rgb frame} berperan dalam memberikan informasi visual seperti warna, tekstur, dan bentuk objek
   untuk membantu segmentasi dan identifikasi. Sedangkan \emph{depth frame} berperan dalam menyediakan
   informasi kedalaman dan struktur 3D objek untuk menentukan posisi dan orientasi grasping yang optimal.
   Pengujian awal dilakukan untuk menilai performa algoritma dalam mendeteksi \emph{pose} \emph{grasping}
