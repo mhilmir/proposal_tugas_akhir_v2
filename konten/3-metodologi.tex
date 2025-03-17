@@ -105,19 +105,24 @@ Berikut merupakan penjelasan dari tiap tahapan pada metode penelitian di atas :
   memilih objek, sistem akan menjalankan GraspNet untuk menentukan titik optimal grasping dan
   mengeksekusi perintah tersebut pada robot lengan. Fitur konfirmasi dan pemberian indikator pada objek
   juga ditambahkan agar interaksi lebih intuitif.
-
+  
   \item \textbf{Perancangan Desain Mounting Robot Lengan Pada Quadruped} : Salah satu tantangan utama dalam penelitian
   ini adalah integrasi robot lengan dengan platform \emph{quadruped}. Desain mounting harus mempertimbangkan faktor-faktor
   seperti keseimbangan, distribusi beban, dan fleksibilitas gerakan. Perancangan dilakukan menggunakan perangkat lunak CAD
   seperti Fusion 360 untuk memastikan desain yang optimal. Proses pemasangan dilakukan dengan memastikan bahwa robot
   \emph{quadruped} tetap dapat bergerak dengan stabil meskipun membawa robot lengan.
-
+  
   \item \textbf{Algoritma Sistem Task-Level} : Setelah integrasi perangkat keras selesai, tahap selanjutnya adalah
   mengembangkan algoritma \emph{task-level} yang mengoordinasikan gerakan robot lengan dan robot \emph{quadruped}.
+  \begin{figure} [H] \centering
+    \includegraphics[scale=0.5]{gambar/Diagram Task Level.png}
+    \caption{Diagram Rencana Sistem Task Level}
+    \label{fig:diagram_task_level}
+  \end{figure}
   Algoritma ini mengatur bagaimana robot menyelesaikan tugas-tugas seperti mendekati objek, mengambilnya, dan
   membawanya ke lokasi yang diinginkan. Jadi nantinya dalam menjalankan tugas, robot memiliki urutan level terkait aksi yang akan dilakukannya.
   Misalnya di level pertama, robot ditentukan oleh operator untuk akan menuju ke ruangan mana. 
-  Lalu level berikutnya, robot menuju ke bagian tertentu di ruangan tersebut. Lalu ada level dimana ditentukan objek mana yang akan di ambil.
+  Lalu level berikutnya, robot menuju ke bagian tertentu di ruangan tersebut. Lalu ada level dimana ditentukan objek mana yang akan diambil.
   Hingga tujuan mana yang akan dituju oleh robot setelah mengambil barang. Selain itu,
    Sistem ini juga harus mempertimbangkan faktor lingkungan, seperti menghindari
   rintangan dan menyesuaikan pergerakan sesuai kondisi medan.
