@@ -15,4 +15,36 @@ termasuk persepsi visual, pemrosesan data \emph{grasping}, kendali robot lengan,
 sehingga robot dapat bekerja secara efisien dalam menjalankan tugasnya.
 
 \section{Hasil Pendahuluan}
-Sejauh ini, penulis...
+Sejauh ini, penulis telah melakukan studi literatur terkait \emph{tools} dan \emph{library} yang digunakan dalam penelitian ini.
+\emph{Tools} dan \emph{library} tersebut antara lain GraspNet sebagai \emph{framework} berbasis \emph{deep learning} yang dirancang untuk
+melakukan prediksi \emph{pose grasping} bagi lengan robot, ROS sebagai sebuah \emph{framework open-source} yang membantu pengembangan,
+pengendalian, serta komunikasi antar komponen sistem robotik, serta QT sebagai \emph{framework} pengembangan aplikasi yang digunakan
+untuk membangun antarmuka grafis (GUI). Selain itu, studi literatur juga dilakukan terkait \emph{hardware} yang akan digunakan dalam penelitian,
+yaitu kamera Intel Realsense, robot \emph{quadruped} DeepRobotics Lite3, serta robot lengan (Open Manipulator - X).
+
+[TAMPILKAN GAMBAR TOPIC 2 STREAM TSB, dan gambar streamingannya]
+
+Dalam proses implementasi GraspNet, penulis berada dalam tahap konfigurasi kamera yang akan digunakan yaitu Intel Realsense.
+Kamera ini merupakan hal dasar yang diperlukan untuk melakukan \emph{grasp detection}. Terdapat tiga output yang dikeluarkan oleh kamera,
+yaitu \emph{RGB Stream}, \emph{Depth Stream}, dan Odometri. Dari ketiganya, hanya dua yang digunakan nantinya yaitu \emph{rgb stream}
+dan \emph{depth stream}. Penulis telah melakukan instalasi ROS-wrapper berbentuk package realsense-ros untuk kedua \emph{stream} ini.
+Dari gambar x dapat dilihat terdapat dua topic ROS yang merepresentasikan \emph{stream} untuk rgb dan depth. Dengan kedua topic ini,
+maka data streamnya dapat diteruskan ke program GraspNet sebagai data persepsi untuk dilakukan \emph{grasp detection}. Sedangkan gambar x
+memperlihatkan hasil streaming dari kamera realsense.
+
+Selain itu, penulis juga telah mengintegrasikan sistem motion planning untuk robot lengan. Sistem motion planning yang digunakan adalah moveit,
+sedangkan robot yang digunakan untuk percobaan ini adalah Open Manipulator - X. Sistem motion planning ini merupakan sistem yang membuat
+peneliti dapat mengatur bagaimana robot lengan bergerak. Karena menggunakan ROS, robot lengan digerakkan dengan cara mengirimkan informasi
+ke beberapa topic, service, dan action yang terkait seperti di bawah ini.
+
+[SS AN TOPIC SERVICE ACTION]
+
+Selain itu, opencr sebagai perantara untuk laptop yang menjalankan ROS dengan robot lengan harus di flash firmware yang berfungsi sebagai
+usb to dxl. usb to dxl merupakan ...
+
+Dalam validasi sistem motion control, robot lengan dapat dikontrol dengan dua cara, yaitu menggunakan keyboard dan GUI MoveIT.
+Dalam kontrol keybord, robot dikendalikan dengan mengontrol tiap servo. Terdapat lima servo.
+Dalam kontrol GUI, robot dapat melakukan motion planning sesuai dengan 
+
+motion planning ini merupakan salah satu tahap dalam grasping,
+graspnet tidak include motion planning, hanya sampai mendapat 6-dof info
