@@ -50,7 +50,7 @@ Dari gambar \ref{fig:realsense_topic} dapat dilihat terdapat dua topic ROS yang 
 maka data streamnya dapat diteruskan ke program GraspNet sebagai data persepsi untuk dilakukan \emph{grasp detection}. Sedangkan gambar \ref{fig:rgb_stream}
 dan \ref{fig:depth_stream} memperlihatkan hasil streaming dari kamera realsense yang ditampilkan dengan rqt tools.
 
-Selain itu, penulis juga telah mengintegrasikan sistem \emph{motion planning} untuk robot lengan. Sistem \emph{motion planning} yang digunakan adalah MoveIT,
+Selain itu, penulis juga telah mengintegrasikan sistem \emph{motion planning} untuk robot lengan. Sistem \emph{motion planning} yang digunakan adalah MoveIt,
 sedangkan robot yang digunakan untuk percobaan ini adalah Open Manipulator - X. Sistem \emph{motion planning} ini merupakan sistem yang membuat
 peneliti dapat mengatur bagaimana robot lengan bergerak. Karena menggunakan ROS, robot lengan digerakkan dengan cara mengirimkan informasi
 ke beberapa topic, service, dan action yang terkait seperti di bawah ini.
@@ -81,10 +81,16 @@ membaca status motor, dan menjalankan algoritma kontrol dalam lingkungan ROS.
     \caption{Kontrol dengan GUI}
     \label{fig:moveit_gui}
 \end{figure}
-Dalam pengujian sistem \emph{motion control}, robot lengan dikontrol dengan dua cara yaitu menggunakan keyboard dan GUI MoveIT.
+Dalam pengujian sistem \emph{motion control}, robot lengan dikontrol dengan dua cara yaitu menggunakan keyboard dan GUI MoveIt.
 Dalam kontrol keybord, robot dikendalikan dengan mengontrol secara terpisah tiap motor yang ada.
-Seperti yang terlihat pada gambar \ref{fig:keyboard_control}.
-Dalam kontrol GUI, robot dapat melakukan motion planning sesuai dengan 
+Seperti yang terlihat pada gambar \ref{fig:keyboard_control}, terdapat 4 motor yang berperan sebagai joint
+dan 1 motor yang berperan sebagai gripper. Kelima motor tersebut dikontrol secara langsung oleh tombol-tombol keyboard.
+Dalam kontrol GUI di gambar \ref{fig:moveit_gui}, robot dapat melakukan \emph{motion planning} sesuai dengan yang direncanakan.
+Peneliti dapat merencanakan pergerakan dengan cara menggerakkan tampilan robot lengan yang ada di GUI. Selanjutnya,
+tombol plan \& execute dapat ditekan agar robot di dunia nyata mengikuti pergerakan yang telah direncanakan tersebut.
 
-motion planning ini merupakan salah satu tahap dalam grasping,
-graspnet tidak include motion planning, hanya sampai mendapat 6-dof info
+\emph{Motion planning} ini merupakan salah satu tahap yang wajib dalam melakukan grasping.
+Hal ini karena GraspNet sendiri belum include dengan \emph{motion planning}. Output dari GraspNet
+adalah mendapat informasi 6-dof untuk melakukan grasping, sedangkan untuk robot lengan menuju posisi
+target 6-dof tersebut menggunakan sistem di luar GraspNet. Dalam hal ini, yaitu menggunakan sistem \emph{motion
+planning} MoveIt.
