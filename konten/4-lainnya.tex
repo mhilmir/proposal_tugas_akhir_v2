@@ -21,34 +21,69 @@ melakukan prediksi \emph{pose grasping} bagi lengan robot, ROS sebagai sebuah \e
 pengendalian, serta komunikasi antar komponen sistem robotik, serta QT sebagai \emph{framework} pengembangan aplikasi yang digunakan
 untuk membangun antarmuka grafis (GUI). Selain itu, studi literatur juga dilakukan terkait \emph{hardware} yang akan digunakan dalam penelitian,
 yaitu kamera Intel Realsense, robot \emph{quadruped} DeepRobotics Lite3, serta robot lengan (Open Manipulator - X).
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/rgb stream.jpeg}
+        \caption{stream rgb}
+        \label{fig:rgb_stream}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/depth stream.jpeg}
+        \caption{stream depth}
+        \label{fig:depth_stream}
+    \end{minipage}
+\end{figure}
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.6]{gambar/topic realsense anotated.png}
+    \caption{Topic terkait Realsense}
+    \label{fig:realsense_topic}
+  \end{figure}
+  Dalam proses implementasi GraspNet, penulis berada dalam tahap konfigurasi kamera yang akan digunakan yaitu Intel Realsense.
+  Kamera ini merupakan hal dasar yang diperlukan untuk melakukan \emph{grasp detection}. Terdapat tiga output yang dikeluarkan oleh kamera,
+  yaitu \emph{RGB Stream}, \emph{Depth Stream}, dan Odometri. Dari ketiganya, hanya dua yang digunakan nantinya yaitu \emph{rgb stream}
+  dan \emph{depth stream}. Penulis telah melakukan instalasi ROS-wrapper berbentuk package realsense2\_camera untuk kedua \emph{stream} ini.
+Dari gambar \ref{fig:realsense_topic} dapat dilihat terdapat dua topic ROS yang merepresentasikan \emph{stream} untuk rgb dan depth. Dengan kedua topic ini,
+maka data streamnya dapat diteruskan ke program GraspNet sebagai data persepsi untuk dilakukan \emph{grasp detection}. Sedangkan gambar \ref{fig:rgb_stream}
+dan \ref{fig:depth_stream} memperlihatkan hasil streaming dari kamera realsense yang ditampilkan dengan rqt tools.
 
-[TAMPILKAN GAMBAR TOPIC 2 STREAM TSB, dan gambar streamingannya]
-
-Dalam proses implementasi GraspNet, penulis berada dalam tahap konfigurasi kamera yang akan digunakan yaitu Intel Realsense.
-Kamera ini merupakan hal dasar yang diperlukan untuk melakukan \emph{grasp detection}. Terdapat tiga output yang dikeluarkan oleh kamera,
-yaitu \emph{RGB Stream}, \emph{Depth Stream}, dan Odometri. Dari ketiganya, hanya dua yang digunakan nantinya yaitu \emph{rgb stream}
-dan \emph{depth stream}. Penulis telah melakukan instalasi ROS-wrapper berbentuk package realsense2_camera untuk kedua \emph{stream} ini.
-Dari gambar x dapat dilihat terdapat dua topic ROS yang merepresentasikan \emph{stream} untuk rgb dan depth. Dengan kedua topic ini,
-maka data streamnya dapat diteruskan ke program GraspNet sebagai data persepsi untuk dilakukan \emph{grasp detection}. Sedangkan gambar x
-memperlihatkan hasil streaming dari kamera realsense yang ditampilkan dengan rqt tools.
-
-Selain itu, penulis juga telah mengintegrasikan sistem motion planning untuk robot lengan. Sistem motion planning yang digunakan adalah moveit,
-sedangkan robot yang digunakan untuk percobaan ini adalah Open Manipulator - X. Sistem motion planning ini merupakan sistem yang membuat
+Selain itu, penulis juga telah mengintegrasikan sistem \emph{motion planning} untuk robot lengan. Sistem \emph{motion planning} yang digunakan adalah MoveIT,
+sedangkan robot yang digunakan untuk percobaan ini adalah Open Manipulator - X. Sistem \emph{motion planning} ini merupakan sistem yang membuat
 peneliti dapat mengatur bagaimana robot lengan bergerak. Karena menggunakan ROS, robot lengan digerakkan dengan cara mengirimkan informasi
 ke beberapa topic, service, dan action yang terkait seperti di bawah ini.
-
-[SS AN TOPIC SERVICE ACTION]
-
-Selain itu, opencr sebagai perantara untuk laptop yang menjalankan ROS dengan robot lengan harus di flash firmware yang berfungsi sebagai
-usb to dxl. Dalam sistem ROS, komunikasi dengan motor Dynamixel dilakukan melalui protokol serial (RS-485 atau TTL),
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.3]{gambar/moveit topic.jpeg}
+    \caption{Topic moveit}
+    \label{fig:moveit_topic}
+  \end{figure}
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.4]{gambar/moveit actions.jpeg}
+    \caption{actions moveit}
+    \label{fig:moveit_actions}
+\end{figure}
+Selain itu, OpenCR sebagai perantara laptop yang menjalankan ROS dengan robot lengan harus diflash \emph{firmware} yang berfungsi sebagai
+USB to DXL. Dalam sistem ROS, komunikasi dengan motor Dynamixel dilakukan melalui protokol serial,
 sedangkan sebagian besar komputer hanya memiliki antarmuka USB. USB to DXL berfungsi sebagai jembatan dengan mengonversi data dari
 USB ke protokol komunikasi yang digunakan oleh motor Dynamixel. Pada Open Manipulator yang dikendalikan dengan ROS,
-USB to DXL memungkinkan komunikasi antara PC atau single-board computer (seperti Raspberry Pi) dengan motor Dynamixel
-melalui port USB, menggunakan perangkat lunak seperti dynamixel_workbench atau ros_control untuk mengirim perintah gerakan,
+USB to DXL memungkinkan komunikasi antara PC atau SBC dengan motor Dynamixel melalui port USB, menggunakan perangkat lunak
+seperti dynamixel\_workbench atau ros\_control untuk mengirim perintah gerakan,
 membaca status motor, dan menjalankan algoritma kontrol dalam lingkungan ROS.
-
-Dalam validasi sistem motion control, robot lengan dapat dikontrol dengan dua cara, yaitu menggunakan keyboard dan GUI MoveIT.
-Dalam kontrol keybord, robot dikendalikan dengan mengontrol tiap servo. Terdapat lima servo.
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.8]{gambar/keyboard control anotated.png}
+    \caption{Kontrol dengan keyboard}
+    \label{fig:keyboard_control}
+  \end{figure}
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.3]{gambar/moveit gui.jpeg}
+    \caption{Kontrol dengan GUI}
+    \label{fig:moveit_gui}
+\end{figure}
+Dalam pengujian sistem \emph{motion control}, robot lengan dikontrol dengan dua cara yaitu menggunakan keyboard dan GUI MoveIT.
+Dalam kontrol keybord, robot dikendalikan dengan mengontrol secara terpisah tiap motor yang ada.
+Seperti yang terlihat pada gambar \ref{fig:keyboard_control}.
 Dalam kontrol GUI, robot dapat melakukan motion planning sesuai dengan 
 
 motion planning ini merupakan salah satu tahap dalam grasping,
