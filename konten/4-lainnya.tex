@@ -27,10 +27,10 @@ yaitu kamera Intel Realsense, robot \emph{quadruped} DeepRobotics Lite3, serta r
 Dalam proses implementasi GraspNet, penulis berada dalam tahap konfigurasi kamera yang akan digunakan yaitu Intel Realsense.
 Kamera ini merupakan hal dasar yang diperlukan untuk melakukan \emph{grasp detection}. Terdapat tiga output yang dikeluarkan oleh kamera,
 yaitu \emph{RGB Stream}, \emph{Depth Stream}, dan Odometri. Dari ketiganya, hanya dua yang digunakan nantinya yaitu \emph{rgb stream}
-dan \emph{depth stream}. Penulis telah melakukan instalasi ROS-wrapper berbentuk package realsense-ros untuk kedua \emph{stream} ini.
+dan \emph{depth stream}. Penulis telah melakukan instalasi ROS-wrapper berbentuk package realsense2_camera untuk kedua \emph{stream} ini.
 Dari gambar x dapat dilihat terdapat dua topic ROS yang merepresentasikan \emph{stream} untuk rgb dan depth. Dengan kedua topic ini,
 maka data streamnya dapat diteruskan ke program GraspNet sebagai data persepsi untuk dilakukan \emph{grasp detection}. Sedangkan gambar x
-memperlihatkan hasil streaming dari kamera realsense.
+memperlihatkan hasil streaming dari kamera realsense yang ditampilkan dengan rqt tools.
 
 Selain itu, penulis juga telah mengintegrasikan sistem motion planning untuk robot lengan. Sistem motion planning yang digunakan adalah moveit,
 sedangkan robot yang digunakan untuk percobaan ini adalah Open Manipulator - X. Sistem motion planning ini merupakan sistem yang membuat
@@ -40,7 +40,12 @@ ke beberapa topic, service, dan action yang terkait seperti di bawah ini.
 [SS AN TOPIC SERVICE ACTION]
 
 Selain itu, opencr sebagai perantara untuk laptop yang menjalankan ROS dengan robot lengan harus di flash firmware yang berfungsi sebagai
-usb to dxl. usb to dxl merupakan ...
+usb to dxl. Dalam sistem ROS, komunikasi dengan motor Dynamixel dilakukan melalui protokol serial (RS-485 atau TTL),
+sedangkan sebagian besar komputer hanya memiliki antarmuka USB. USB to DXL berfungsi sebagai jembatan dengan mengonversi data dari
+USB ke protokol komunikasi yang digunakan oleh motor Dynamixel. Pada Open Manipulator yang dikendalikan dengan ROS,
+USB to DXL memungkinkan komunikasi antara PC atau single-board computer (seperti Raspberry Pi) dengan motor Dynamixel
+melalui port USB, menggunakan perangkat lunak seperti dynamixel_workbench atau ros_control untuk mengirim perintah gerakan,
+membaca status motor, dan menjalankan algoritma kontrol dalam lingkungan ROS.
 
 Dalam validasi sistem motion control, robot lengan dapat dikontrol dengan dua cara, yaitu menggunakan keyboard dan GUI MoveIT.
 Dalam kontrol keybord, robot dikendalikan dengan mengontrol tiap servo. Terdapat lima servo.
