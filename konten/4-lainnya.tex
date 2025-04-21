@@ -28,7 +28,27 @@ beberapa faktor seperti kemudahan instalasi dan kejelasan pandangan kamera. Sela
 berada di ujung, robot dapat mengendalikan arah kamera sesuai dengan arah gripper. Berikut merupakan hasil desain mounting
 dan hasil cetaknya.
 
-aaaaaaaaaaaaaaaaaa GAMBAR aaaaaaaaaaaaaaaaaa
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.7]{gambar/desain mounting realsense.png}
+    \caption{Desain mounting realsense}
+    \label{fig:realsense_mounting}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.36\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/hasil mounting realsense.jpg}
+        \caption{Hasil desain}
+        \label{fig:realsense_mount2}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.36\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/hasil mounting realsense 2.jpg}
+        \caption{Hasil desain}
+        \label{fig:realsense_mount3}
+    \end{minipage}
+\end{figure}
 
 Dalam proses implementasi GraspNet, penulis berada dalam tahap konfigurasi kamera yang akan digunakan yaitu Intel Realsense.
 Kamera ini merupakan hal dasar yang diperlukan untuk melakukan \emph{grasp detection}. Terdapat tiga output yang dikeluarkan oleh kamera,
@@ -61,7 +81,32 @@ maka data streamnya dapat diteruskan ke program GraspNet sebagai data persepsi u
 dan \ref{fig:depth_stream} memperlihatkan hasil streaming dari kamera realsense yang ditampilkan dengan rqt tools.
 Berikut merupakan diagram input-output yang merepresentasikan cara kerja GraspNet.
 
-aaaaaaaaaaaaaaaaaa GAMBAR aaaaaaaaaaaaaaaaaa
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.7]{gambar/graspnet idea.png}
+    \caption{Input output diagram dari graspnet}
+    \label{fig:graspnet idea}
+\end{figure}
+
+Penulis telah melakukan setup dan instalasi graspnet di pc lab menggunakan docker. 
+Penulis juga telah mencoba implementasi graspnet dengan default example, dimana color.png, depth.png, dan metadata sudah disediakan dalam dokumentasi graspnet.
+Hasilnya, beberapa kemungkinan grasping pose berhasil di generate. Namun, saat menggunakan input data sendiri, hasilnya masih kurang bagus.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.44\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/grasping default example.png}
+        \caption{Percobaan graspnet dengan default example}
+        \label{fig:graspnet_default_example}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.38\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/graspnet self try.png}
+        \caption{Percobaan graspnet dengan data sendiri kurang bagus}
+        \label{fig:graspnet_self_try}
+    \end{minipage}
+\end{figure}
 
 Selain itu, penulis juga telah mengintegrasikan sistem \emph{motion planning} untuk robot lengan. Sistem \emph{motion planning} yang digunakan adalah MoveIt,
 sedangkan robot yang digunakan untuk percobaan ini adalah Open Manipulator - X. Sistem \emph{motion planning} ini merupakan sistem yang membuat
@@ -73,7 +118,7 @@ ke beberapa topic, service, dan action yang terkait seperti di bawah ini.
     \label{fig:moveit_topic}
   \end{figure}
 \begin{figure} [H] \centering
-    \includegraphics[scale=0.4]{gambar/moveit actions.jpeg}
+    \includegraphics[scale=0.5]{gambar/moveit actions.jpeg}
     \caption{Actions MoveIt}
     \label{fig:moveit_actions}
 \end{figure}
@@ -108,6 +153,57 @@ adalah mendapat informasi 6-dof untuk melakukan grasping, sedangkan untuk robot 
 target 6-dof tersebut menggunakan sistem di luar GraspNet. Dalam hal ini, yaitu menggunakan sistem \emph{motion
 planning} MoveIt.
 
-[atas udah, tinggal ini ke bawah] op3 kekecilan jadi pake robot arm yg sekarang
-penyesuaiaan base mounting
-program pemilihan objek
+Dikarenakan ukuran robot open manipulator yang cukup kecil dan cenderung tidak proporsi dengan robot quadruped,
+maka penulis mencoba menggunakan robot arm lain yang lebih besar. Robot arm ini menggunakan servo yang sama
+seperti open manipulator yaitu dynamixel. Namun serinya saja yang berbeda yaitu dynamixel mx64 dan mx28, sedangkan
+open manipulator menggunakan dynamixel xm430-w350. Kontroller yang digunakan oleh robot ini merupakan board custom
+yang dikembangkan oleh tim Ichiro.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/robot arm yg digunakan.jpg}
+        \caption{Robot Arm yang lebih besar}
+        \label{fig:robot_arm_custom}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.36\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/kontroller ichiro.jpg}
+        \caption{Kontroller yang digunakan}
+        \label{fig:kontroller_ichiro}
+    \end{minipage}
+\end{figure}
+
+Namun ada beberapa penyesuaiaan terkait robot ini. Pada awalnya, sudut kebebasan pada joint bagian pangkal hanyalah 180 derajat.
+\begin{figure} [H] \centering
+    \includegraphics[scale=0.4]{gambar/base_sebelum.png}
+    \caption{Mounting servo awalnya memiliki limit 180 derajat}
+    \label{fig:base_sebelum}
+\end{figure}
+Hal ini akan membatasi pergerakan robot untuk mengambil objek dari berbagai arah. Oleh karena itu, dibuat desain mounting yang baru
+di bagian servo pangkal. Desain yang baru ini akan memungkinkan robot dapat menghadap ke segala arah, membuatnya dapat mengambil 
+objek lebih leluasa.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.60\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/desain mounting servo.png}
+        \caption{Desain mounting servo pangkal robot}
+        \label{fig:servo_mounting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.24\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gambar/hasil desain mounting servo.jpg}
+        \caption{Hasil desain}
+        \label{fig:hasil_servo_mounting}
+    \end{minipage}
+\end{figure}
+
+Salah satu tahap dalam alur penelitian adalah pembuatan program atau algoritma pemilihan objek dengan mouse.
+Dalam hal ini, penulis telah membuat program tersebut menggunakan hasil bounding box dari yolo. Penggunaan yolo
+disini hanya untuk merepresentasikan bounding box sehingga program pemilihan objek bisa dibuat. Bukan berarti
+nantinya yolo akan digunakan dalam penelitian.
