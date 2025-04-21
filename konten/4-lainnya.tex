@@ -21,6 +21,19 @@ melakukan prediksi \emph{pose grasping} bagi lengan robot, ROS sebagai sebuah \e
 pengendalian, serta komunikasi antar komponen sistem robotik, serta QT sebagai \emph{framework} pengembangan aplikasi yang digunakan
 untuk membangun antarmuka grafis (GUI). Selain itu, studi literatur juga dilakukan terkait \emph{hardware} yang akan digunakan dalam penelitian,
 yaitu kamera Intel Realsense, robot \emph{quadruped} DeepRobotics Lite3, serta robot lengan (Open Manipulator - X).
+
+Selanjutnya, penulis telah mengerjakan desain mounting kamera realsense yang dipasang di ujung robot lengan.
+Pengerjaan desain dilakukan dengan onshape, lalu dicetak dengan 3d printer. Desain dibuat dengan memperhatikan
+beberapa faktor seperti kemudahan instalasi dan kejelasan pandangan kamera. Selain itu, dengan kamera yang
+berada di ujung, robot dapat mengendalikan arah kamera sesuai dengan arah gripper. Berikut merupakan hasil desain mounting
+dan hasil cetaknya.
+
+aaaaaaaaaaaaaaaaaa GAMBAR aaaaaaaaaaaaaaaaaa
+
+Dalam proses implementasi GraspNet, penulis berada dalam tahap konfigurasi kamera yang akan digunakan yaitu Intel Realsense.
+Kamera ini merupakan hal dasar yang diperlukan untuk melakukan \emph{grasp detection}. Terdapat tiga output yang dikeluarkan oleh kamera,
+yaitu \emph{RGB Stream}, \emph{Depth Stream}, dan Odometri. Dari ketiganya, hanya dua yang digunakan nantinya yaitu \emph{rgb stream}
+dan \emph{depth stream}.
 \begin{figure}[h]
     \centering
     \begin{minipage}{0.48\columnwidth}
@@ -41,14 +54,14 @@ yaitu kamera Intel Realsense, robot \emph{quadruped} DeepRobotics Lite3, serta r
     \includegraphics[scale=0.6]{gambar/topic realsense anotated.png}
     \caption{Topic terkait Realsense}
     \label{fig:realsense_topic}
-  \end{figure}
-  Dalam proses implementasi GraspNet, penulis berada dalam tahap konfigurasi kamera yang akan digunakan yaitu Intel Realsense.
-  Kamera ini merupakan hal dasar yang diperlukan untuk melakukan \emph{grasp detection}. Terdapat tiga output yang dikeluarkan oleh kamera,
-  yaitu \emph{RGB Stream}, \emph{Depth Stream}, dan Odometri. Dari ketiganya, hanya dua yang digunakan nantinya yaitu \emph{rgb stream}
-  dan \emph{depth stream}. Penulis telah melakukan instalasi ROS-wrapper berbentuk package realsense2\_camera untuk kedua \emph{stream} ini.
+\end{figure}
+Penulis telah melakukan instalasi ROS-wrapper berbentuk package realsense2\_camera untuk kedua \emph{stream} ini.
 Dari gambar \ref{fig:realsense_topic} dapat dilihat terdapat dua topic ROS yang merepresentasikan \emph{stream} untuk rgb dan depth. Dengan kedua topic ini,
 maka data streamnya dapat diteruskan ke program GraspNet sebagai data persepsi untuk dilakukan \emph{grasp detection}. Sedangkan gambar \ref{fig:rgb_stream}
 dan \ref{fig:depth_stream} memperlihatkan hasil streaming dari kamera realsense yang ditampilkan dengan rqt tools.
+Berikut merupakan diagram input-output yang merepresentasikan cara kerja GraspNet.
+
+aaaaaaaaaaaaaaaaaa GAMBAR aaaaaaaaaaaaaaaaaa
 
 Selain itu, penulis juga telah mengintegrasikan sistem \emph{motion planning} untuk robot lengan. Sistem \emph{motion planning} yang digunakan adalah MoveIt,
 sedangkan robot yang digunakan untuk percobaan ini adalah Open Manipulator - X. Sistem \emph{motion planning} ini merupakan sistem yang membuat
@@ -94,3 +107,7 @@ Hal ini karena GraspNet sendiri belum include dengan \emph{motion planning}. Out
 adalah mendapat informasi 6-dof untuk melakukan grasping, sedangkan untuk robot lengan menuju posisi
 target 6-dof tersebut menggunakan sistem di luar GraspNet. Dalam hal ini, yaitu menggunakan sistem \emph{motion
 planning} MoveIt.
+
+[atas udah, tinggal ini ke bawah] op3 kekecilan jadi pake robot arm yg sekarang
+penyesuaiaan base mounting
+program pemilihan objek
